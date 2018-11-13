@@ -1,0 +1,96 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: FontAwesome;
+        }
+
+        .btn-read-more {
+            padding: 5px;
+            text-align: center;
+            border-radius: 0px;
+            display: inline-block;
+            border: 2px solid #662D91;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 12px;
+            color: #662D91;
+        }
+
+        .btn-read-more:hover {
+            color: #FFF;
+            background: #662D91;
+        }
+
+        .post {
+            border-bottom: 1px solid #DDD
+        }
+
+        .post-title {
+            color: #662D91;
+        }
+
+        .post .glyphicon {
+            margin-right: 5px;
+        }
+
+        .post-header-line {
+            border-top: 1px solid #DDD;
+            border-bottom: 1px solid #DDD;
+            padding: 5px 0px 5px 15px;
+            font-size: 12px;
+        }
+
+        .post-content {
+            padding-bottom: 15px;
+            padding-top: 15px;
+        }
+
+
+        .sidebar {
+            height: 100%;
+            width: 160px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #1c74bc;
+            overflow-x: hidden;
+            padding-top: 16px;
+        }
+
+        .sidebar a {
+            padding: 6px 8px 6px 16px;
+            text-decoration: none;
+            font-size: 20px;
+            color: #f1f1f1;
+            display: block;
+        }
+
+        .sidebar a:hover {
+            color: #f1f1f1;
+        }
+
+        .main {
+            margin-left: 160px;
+            /* Same as the width of the sidenav */
+            padding: 0px 10px;
+        }
+
+        @media screen and (max-height: 450px) {
+            .sidebar {
+                padding-top: 15px;
+            }
+
+            .sidebar a {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+
+</html>

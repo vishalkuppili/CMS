@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Home</title>
+  <% include ./partials/scripts %>
+  <% include ./partials/sidebar %>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+  <% include ./partials/sidebarhtml %>
+  <div class="main">
+      <img src="/images/drylet.png" align="centre">
+    <p>Welcome,
+      <%= session.username %>
+    </p>
+    <% if ( typeof(rows) !== 'undefined' ) { %>
+    <% for(var i = 0; i < rows.length; i++) { %>
+      <div class="span8">
+          <h1><%- rows[i].title %></h1>
+          <p><%- rows[i].summary %></p>
+          <div>
+              <span class="badge badge-success">Posted <%- rows[i].created_at.toUTCString() %></span> <a class="btn btn-read-more" href='/stories/<%- rows[i].slug%>'>Read More</a> <div class="pull-right"><span class="label"><%=rows[i].author%></span></div>
+          </div> 
+          <hr>
+      </div>
+    <% } %>
+    <% } %>
+  </div>
+</body>
+
+</html>
