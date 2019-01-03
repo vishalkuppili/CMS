@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>New Stories</title>
+    <title>New Meeting</title>
     <% include ./partials/scripts %>
     <% include ./partials/sidebar %>
     <!-- include libraries(jQuery, bootstrap) -->
@@ -10,48 +10,19 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
 
-    <!-- include summernote css/js -->
-    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
 </head>
 
 <body>
-    <% include ./partials/sidebarhtml %>
-    <div class="main">
-        <div class="wrapper">
-            <div class="main-content">
-                <div class="col-md-">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h3 class="panel-title"><strong>Add Meeting </strong></h3>
-                        </div>
-                        <div class="panel-body">
-                            <form role="form" method="POST" action="/stories/add">
-                                <div class="form-group">
-                                    <label for="title">Title</label>
-                                    <input name="title" type="text" class="form-control" id="title">
-                                </div>
-                                <div class="form-group">
-                                    <label for="summary">Summary</label>
-                                    <textarea name="summary" id="summary" class="form-control"></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label for="content">Content</label>
-                                    <textarea name="content" id="content" class="form-control"></textarea>
-                                </div>
-                                <button type="submit" class="btn btn-sm btn-default">Add Story</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+    <div id=wrapper>
+        <% include ./partials/sidebarhtml %>
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                
+                <%include ./partials/MeetingForm %>
             </div>
         </div>
     </div>
-    <script>
-        $(document).ready(function () {
-            $('#content').summernote();
-        });
-    </script>
+    
 </body>
 
 </html>

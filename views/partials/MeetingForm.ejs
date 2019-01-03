@@ -1,0 +1,169 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Snippet - Bootsnipp.com</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet">
+
+    <style>
+        html,body{
+            font-family: 'Play';
+        }
+        .card-default {
+            color: #333;
+            background: linear-gradient(#fff,#ebebeb) repeat scroll 0 0 transparent;
+            font-weight: 600;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="accordion">
+            <div class="card card-default">
+                <div class="card-header">
+                    <h4 class="card-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                            <b>DETAILS OF THE MEETING</b>
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse2" class="collapse show">
+                    <div class="card-body">
+                        <form role="form" method="POST" action="/stories/add">
+                            <div class="row">
+                                <div class="col-md-3 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="control-label">Customer</label>
+                                        <input name="customer" id="customer" type="text" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="control-label">Plant Name</label>
+                                        <input name="plantName" id="plantName" type="text" class="form-control">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="control-label">Plant Location</label>
+                                        <input name="plantLocation" id="plantLocation" type="text" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label class="control-label">Plant Size</label>
+                                        <input name="plantSize" id="plantSize" type="text" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label class="control-label">Plant Type</label>
+                                        <input name="plantType" id="plantType" type="text" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="control-label">Drylet Attendees</label>
+                                        <input name="dryletAttendees" id="dryletAttendees" type="text" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="control-label">Client Attendees</label>
+                                        <input name="clientAttendees" id="clientAttendees" type="text" class="form-control">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4 col-lg-4">
+                                    <div class="form-group">
+                                        <label class="control-label">Contact Information:(Phone Number)</label>
+                                        <input name="phone" id="phone" type="text" class="phone form-control">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 col-lg-4">
+                                    <div class="form-group">
+                                        <label class="control-label">Fax Number</label>
+                                        <input name="fax" id="fax" type="text" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 col-lg-4">
+                                    <label class="control-label">Email</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                                        <input name="email" id="email" type="text" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <label class="control-label">Minutes of the meeting</label>
+                                    <textarea name="minutes" id="minutes" rows="8" name="follow_up" id="follow_up"
+                                        class="form-control"></textarea>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <label class="control-label">Action Items</label>
+                                    <textarea rows="8" name="actionItems" id="actionItems" class="form-control"></textarea>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <label class="control-label">Comments</label>
+                                    <textarea rows="8" name="comments" id="comments" class="form-control"></textarea>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="pull-right">
+                                        <button type="submit" class="btn btn-success btn-lg" id="btnSubmit">
+                                            <i class="fa fa-save"></i>
+                                            Save
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <br>
+        </div>
+    </div>
+    <script>
+        window.jQuery = window.$ = jQuery;
+        $("#btn-logout").css("display","inline");
+    </script>
+</body>
+
+</html>

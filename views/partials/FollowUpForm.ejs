@@ -1,0 +1,267 @@
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet">
+    <style>
+        .card-inner {
+            margin-left: 4rem;
+        }
+
+        /* Other style */
+        body {
+            font-family: 'Play';
+            padding: 0;
+            top : 0;
+        }
+
+        html{
+            font-family: 'Play';
+            font-size: 15px;
+        }
+
+        .card-default {
+            color: #333;
+            background: linear-gradient(#fff,#ebebeb) repeat scroll 0 0 transparent;
+            font-weight: 600;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>
+                            <a class="float-left" href="#"><strong>
+                                    <%= author %></strong></a>
+                            <a class="float-right" href="#">
+                                <%= created_at %></a>
+                        </p>
+                        <br>
+                        <div class="row">
+                            <div class="col col-md-6">
+                                <b class="mr-3 pr-3 align-top border-right inline-block align-content-center">CUSTOMER</b>
+                                <%= customer %>
+                            </div>
+                            <div class="col col-md-6">
+                                <b class="mr-3 pr-3 align-top border-right inline-block align-content-center">PLANT
+                                    NAME</b>
+                                <%= plantName %>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col col-md-6">
+                                <b class="mr-3 pr-3 align-top border-right inline-block align-content-center">PLANT
+                                    LOCATION</b>
+                                <%= plantLocation %>
+                            </div>
+                            <div class="col col-md-3">
+                                <b class="mr-3 pr-3 align-top border-right inline-block align-content-center">PLANT
+                                    SIZE</b>
+                                <%= plantSize %>
+                            </div>
+                            <div class="col col-md-3">
+                                <b class="mr-3 pr-3 align-top border-right inline-block align-content-center">PLANT
+                                    TYPE</b>
+                                <%= plantType %>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col col-md-6">
+                                <b class="mr-3 pr-3 align-top border-right inline-block align-content-center">DRYLET
+                                    ATTENDEES</b>
+                                <%= dryletAttendees %>
+                            </div>
+                            <div class="col col-md-6">
+                                <b class="mr-3 pr-3 align-top border-right inline-block align-content-center">CLIENT
+                                    ATTENDEES</b>
+                                <%= clientAttendees %>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col col-md-4">
+                                <b class="mr-3 pr-3 align-top border-right inline-block align-content-center">PHONE
+                                    NUMBER</b>
+                                <%= phone %>
+                            </div>
+                            <div class="col col-md-4">
+                                <b class="mr-3 pr-3 align-top border-right inline-block align-content-center">FAX NAME</b>
+                                <%= fax %>
+                            </div>
+                            <div class="col col-md-4">
+                                <b class="mr-3 pr-3 align-top border-right inline-block align-content-center">EMAIL</b>
+                                <%= email %>
+                            </div>
+                        </div>
+                        <br>
+                        <b class="mr-3 pr-3 align-top border-right inline-block align-content-center">MINUTES OF THE
+                            MEETING</b>
+                        <p>
+                            <%= minutes %>
+                        </p>
+                        <br>
+                        <b class="mr-3 pr-3 align-top border-right inline-block align-content-center">ACTION ITEMS</b>
+                        <p>
+                            <%= actionItems %>
+                        </p>
+                        <br>
+                        <b class="mr-3 pr-3 align-top border-right inline-block align-content-center">COMMENTS</b>
+                        <p>
+                            <%= comments %>
+                        </p>
+                    </div>
+                </div>
+                <div class="card card-inner">
+                    <div class="card-body" class="col-md-10">
+                        <div class="row">
+                            <p>
+                                <button id="btn" type="button" class="float-left btn btn-outline-primary ml-2"><i class="fa fa-reply"></i>Follow-Up</button>
+                            </p>
+                            <div class="container" id="container1" style="display:none">
+                                <div id="accordion">
+                                    <div class="card card-default">
+                                        <div class="card-header">
+                                            <h4 class="card-title">
+                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                                                    <b>FOLLOW UP</b>
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapse2" class="collapse show">
+                                            <div class="card-body">
+                                                <form role="form" method="POST" action="/stories/<%-slug%>">
+                                                    <div class="row">
+                                                        <div class="col-md-4 col-lg-6">
+                                                            <div class="form-group">
+                                                                <label class="control-label">Drylet Attendees</label>
+                                                                <input name="fdryletAttendees" id="fdryletAttendees"
+                                                                    type="text" class="form-control">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-4 col-lg-6">
+                                                            <div class="form-group">
+                                                                <label class="control-label">Client Attendees</label>
+                                                                <input name="fclientAttendees" id="fclientAttendees"
+                                                                    type="text" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <label class="control-label">Minutes of the meeting</label>
+                                                            <textarea name="fminutes" id="fminutes" rows="4" name="follow_up"
+                                                                id="follow_up" class="form-control"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <label class="control-label">Action Items</label>
+                                                            <textarea rows="4" name="factionItems" id="factionItems"
+                                                                class="form-control"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <label class="control-label">Comments</label>
+                                                            <textarea rows="4" name="fcomments" id="fcomments" class="form-control"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div class="pull-right">
+                                                                <button type="submit" class="btn btn-success btn-lg" id="btnSubmit"><i
+                                                                        class="fa fa-save"></i> Save</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card card-inner">
+                <div class="card-body">
+                    <% if (followup.length !== 0) { %>
+                        <% for(var i = followup.length-1; i >= 0; i--){ %>
+                            <% if (i!== 0) {%>
+                                <hr>
+                            <% } %>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p>
+                                        <a href="#"><strong>
+                                                <%- followup[i].fcommentedBy %></strong></a>
+                                        <a class="float-right" href="#">
+                                            <%- followup[i].fdate %></a>
+                                    </p>
+                                    <div class="row">
+                                        <div class="col col-md-6">
+                                            <b class="mr-3 pr-3 align-top border-right inline-block align-content-center">DRYLET
+                                                ATTENDEES</b>
+                                            <%- followup[i].fdryletAttendees %>
+                                        </div>
+                                        <div class="col col-md-6">
+                                            <b class="mr-3 pr-3 align-top border-right inline-block align-content-center">CLIENT
+                                                ATTENDEES</b>
+                                            <%- followup[i].fclientAttendees %>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <b class="mr-3 pr-3 align-top border-right inline-block align-content-center">MINUTES OF
+                                        THE MEETING</b>
+                                    <p>
+                                        <%- followup[i].fminutes %>
+                                    </p>
+                                    <br>
+                                    <b class="mr-3 pr-3 align-top border-right inline-block align-content-center">ACTION ITEMS</b>
+                                    <p>
+                                        <%- followup[i].factionItems %>
+                                    </p>
+                                    <br>
+                                    <b class="mr-3 pr-3 align-top border-right inline-block align-content-center">COMMENTS</b>
+                                    <p>
+                                        <%- followup[i].fcomments %>
+                                    </p>
+                                </div>
+                            </div>
+                        <% } %>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        window.jQuery = window.$ = jQuery;
+        $("#btn-logout").css("display","inline");
+        $( "#btn" ).click(function() {
+            $( "#container1" ).toggle();
+        });
+    </script>
+</body>
+
+</html>

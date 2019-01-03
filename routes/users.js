@@ -19,7 +19,6 @@ router.post('/login', function (req, res, next) {
       res.render("/login", {})
     }
     if (rows.length > 0) {
-      console.log(rows)
       req.session.username = req.body.email;
       res.redirect("/")
     }
@@ -30,7 +29,10 @@ router.post('/login', function (req, res, next) {
 });
 
 router.get('/logout', function (req, res, next) {
-  res.render("logout", {});
+  var loggedOutUser = req.session.username;
+  req.session.destroy();
+  console.log("Logged Out :"+loggedOutUser);
+  res.render("logout", {loggedOutUser : loggedOutUser});
 });
 
 router.get('/signup', function (req, res, next) {
@@ -39,9 +41,7 @@ router.get('/signup', function (req, res, next) {
 
 router.post('/signup', function (req, res, next) {
   UserModel.find({email : req.body.email}, function(err, rows){
-
-    console.log(rows);
-
+    
     if(rows.length > 0){
       res.render("signup",{error:"Users already created"});
     }

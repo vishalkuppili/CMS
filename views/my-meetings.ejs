@@ -2,15 +2,22 @@
 <html>
 
 <head>
-  <title>Home</title>
+  <title>My Meetings</title>
   <% include ./partials/scripts %>
   <% include ./partials/sidebar %>
   <link rel='stylesheet' href='/stylesheets/style.css' />
   <link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet">
   <style>
-    html,body{
-        font-family: 'Play';
-        }
+    body {
+      font-family: 'Play';
+      padding: 0;
+      top: 0;
+    }
+
+    html {
+      font-family: 'Play';
+      font-size: 15px;
+    }
   </style>
 </head>
 
@@ -21,19 +28,15 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-lg-12">
-            <!-- <img src="/images/drylet.png" align="centre"> -->
-            <h2>
-              <strong>
-                  WELCOME, <%= session.username %>
-              </strong>
-            </h2>
-            <br><br>
             <% if ( typeof(rows) !== 'undefined' ) { %>
             <% for(var i = 0; i < rows.length; i++) { %>
             <div class="span8">
-              <h3>
-                <strong><%- rows[i].customer %></strong>
-              </h3>
+
+              <h2>
+                <strong>
+                  <%- rows[i].customer %>
+                </strong>
+              </h2>
               <br>
               <p>
                 <%- rows[i].actionItems %>
@@ -45,11 +48,8 @@
                 <span class="badge badge-success">Posted
                   <%- rows[i].created_at.toUTCString() %></span> <a class="btn btn-read-more" href='/stories/<%- rows[i].slug%>'>Read
                   More</a>
-                <div class="pull-right">
-                  <span class="label">
-                    <%=rows[i].author%>
-                  </span>
-                </div>
+                <div class="pull-right"><span class="label">
+                    <%=rows[i].author%></span></div>
               </div>
               <hr>
             </div>
@@ -61,8 +61,8 @@
     </div>
   </div>
   <script>
-      window.jQuery = window.$ = jQuery;
-      $("#btn-logout").css("display","inline");
+    window.jQuery = window.$ = jQuery;
+    $("#btn-logout").css("display", "inline");
   </script>
 </body>
 

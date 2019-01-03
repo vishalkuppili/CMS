@@ -14,15 +14,27 @@ router.get('/add', function(req, res, next) {
 });
 
 router.post('/add', function(req, res, next) {
-    var validSlug = req.body.title
+    var first = req.body.customer
                     .replace(/[^a-zA-Z0-9 ]/gi, "")
                     .replace(/ /gi, "-")
                     .toLowerCase()
-    
+
+    var validSlug = first+"-"+(Math.floor(Date.now() / 1000).toString());
+
     const storiesModelInstance = new StoriesModel({
-        title : req.body.title,
-        content : req.body.content,
-        summary : req.body.summary,
+        customer : req.body.customer,
+        plantName : req.body.plantName,
+        plantLocation : req.body.plantLocation,
+        plantSize : req.body.plantSize,
+        plantType : req.body.plantType,
+        dryletAttendees : req.body.dryletAttendees,
+        clientAttendees : req.body.clientAttendees,
+        phone : req.body.phone,
+        fax : req.body.fax,
+        email : req.body.email,
+        minutes : req.body.minutes,
+        actionItems: req.body. actionItems,
+        comments : req.body.comments,
         slug : validSlug,
         author : req.session.username
     });
@@ -36,18 +48,34 @@ router.post('/add', function(req, res, next) {
     });
 });
 
+router.get('/myMeetings', function(req,res,next){
+    if(typeof req.session.username === "undefined"){
+        res.redirect("/user/login");     
+    }
+    else{
+        StoriesModel.find({ author : req.session.username }, function(err,rows){
+            res.render("my-meetings", {rows:rows})
+        })
+    }
+});
+
 router.get('/:slug', function(req, res, next) {
     StoriesModel.find({ slug : req.params.slug }, function(err,rows){
-        res.render("story", { ...rows[0]._doc })
+        res.render("story", {...rows[0]._doc})
     })
 });
 
 router.post('/:slug', function(req, res, next) {
-    var comment = {
-        heading : req.body.heading,
-        follow_up : req.body.follow_up,
-        commentedBy : req.session.username};
-    StoriesModel.findOneAndUpdate({ slug : req.params.slug}, {$push:{comments : comment}}, function(err, row){
+    var followup = {
+        fdryletAttendees : req.body.fdryletAttendees,
+        fclientAttendees : req.body.fclientAttendees,
+        fminutes : req.body.fminutes,
+        factionItems: req.body.factionItems,
+        fcomments : req.body.fcomments,
+        fcommentedBy : req.session.username
+    };
+    
+    StoriesModel.findOneAndUpdate({ slug : req.params.slug}, {$push:{followup : followup}}, function(err, row){
         console.log('Successful');
     });
     

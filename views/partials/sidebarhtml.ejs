@@ -1,10 +1,46 @@
 <html>
 
+<head>
+    <title>Drylet</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/public/images/Drylet logo.jpg" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet">
+    <link href="/stylesheets/simple-sidebar.css" rel="stylesheet">
+    <link href="/stylesheets/custom.css" rel="stylesheet">
+</head>
+
 <body>
-    <div class="sidebar">
-        <img src="/images/Drylet Logo.jpg" align="centre">
-        <a href="/"><i class="fa fa-fw fa-home"></i> Home</a>
-        <a href="/stories/add"><i class="fa fa-fw fa-wrench"></i> New Meeting</a>
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <br>
+            <li class="sidebar-brand">
+                <a class="brandFont" align="center" href="/">
+                    DRYLET
+                </a>
+            </li>
+            <br>
+
+            <div align="center">
+                <img class="img-circle" src="/images/Drylet logo.jpg">
+            </div>
+            <br>
+
+            <li>
+                <a class="menus" align="center" href="/stories/add">NEW MEETING</a>
+            </li>
+            <li>
+                <a class="menus" align="center" href="/stories/myMeetings">MY MEETINGS</a>
+            </li>
+            <li>
+                <a class="menus" align="center" href="/">ALL MEETINGS</a>
+            </li>
+            <br><br>
+            <div align="center">
+                <a type="button" href="/user/logout" align="center" class="btn btn-danger btn-lg" id="btn-logout" style="display: none;">Logout</a>
+            </div>
+        </ul>
     </div>
 </body>
 

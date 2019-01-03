@@ -13,7 +13,6 @@ router.get('/', function(req, res, next) {
     StoriesModel.find({}, function(err,rows){
       res.render('index', { rows:rows, session : req.session });
     })
-    console.log(chalk.white(req.session));
   }
 });
 

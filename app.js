@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var bodyParser = require('body-parser');
 
 var session = require('express-session');
 
@@ -17,16 +18,25 @@ const mongoose = require("mongoose");
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+var jsdom = require('jsdom');
+const { JSDOM } = jsdom;
+const { window } = new JSDOM();
+const { document } = (new JSDOM('')).window;
+global.document = document;
+var $ = require("jquery");
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use( express.static( "public" ) );
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 app.set('trust proxy', 1) // trust first proxy
 app.use(session({
-  secret: 'marale',
+  secret: require('crypto').randomBytes(64).toString('hex'),
   resave: false,
   saveUninitialized: true,
   cookie: { secure: false }
@@ -36,7 +46,7 @@ app.use('/', indexRouter);
 app.use('/user', usersRouter);
 app.use('/stories', storiesRouter);
 
-mongoose.connect("mongodb://localhost/drylet")
+mongoose.connect("mongodb://vkuppili:Drylet123!@ds147684.mlab.com:47684/dryletcms")
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
