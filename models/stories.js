@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const StoriesSchema = new mongoose.Schema({
     author : String,
     customer : {type : String},
-    created_at : { type : Date, default : Date.now },
+    created_at : { type : Date, default : Date.now.toLocaleString('en-US', { timeZone: 'America/Menominee' })},
     plantName : String,
     plantLocation : String,
     plantSize : String,
@@ -24,7 +24,7 @@ const StoriesSchema = new mongoose.Schema({
         factionItems : String,
         fcomments : String,
         fcommentedBy : String,
-        fdate : { type : Date, default : Date.now } 
+        fdate : { type : Date, default : Date.now.toLocaleString('en-US', { timeZone: 'America/Menominee' })} 
     }]
 });
 
